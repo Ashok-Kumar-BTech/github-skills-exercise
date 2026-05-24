@@ -11,7 +11,7 @@ const app = express();
 const port = Number(process.env.PORT) || 8000;
 
 const codespaceName = process.env.CODESPACE_NAME;
-const baseUrl = codespaceName
+const apiBaseUrl = codespaceName
   ? `https://${codespaceName}-8000.app.github.dev`
   : 'http://localhost:8000';
 
@@ -26,7 +26,7 @@ app.get('/api/health', async (_req, res) => {
   const mongoState = mongoose.connection.readyState;
   res.json({
     status: 'ok',
-    baseUrl,
+    baseUrl: apiBaseUrl,
     port,
     mongo: {
       uri: MONGO_URI,
@@ -45,7 +45,7 @@ async function start(): Promise<void> {
   }
 
   app.listen(port, () => {
-    console.log(`OctoFit backend listening on ${baseUrl}`);
+    console.log(`OctoFit backend listening on ${apiBaseUrl}`);
   });
 }
 
