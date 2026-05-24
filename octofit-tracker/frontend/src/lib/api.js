@@ -9,6 +9,10 @@ export function getApiBaseUrl() {
 
 export function getApiEndpoint(pathname) {
   const normalizedPath = pathname.startsWith('/') ? pathname : `/${pathname}`;
+  if (normalizedPath.startsWith('/api/')) {
+    return `${getApiBaseUrl().replace(/\/api$/, '')}${normalizedPath}`;
+  }
+
   return `${getApiBaseUrl()}${normalizedPath}/`;
 }
 

@@ -11,7 +11,7 @@ function Teams() {
 
     async function loadTeams() {
       try {
-        const response = await fetch(getApiEndpoint('/teams'));
+        const response = await fetch(getApiEndpoint('/api/teams/'));
         if (!response.ok) {
           throw new Error(`Failed to load teams (${response.status})`);
         }

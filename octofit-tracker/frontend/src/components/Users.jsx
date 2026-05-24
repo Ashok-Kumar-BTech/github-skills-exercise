@@ -11,7 +11,7 @@ function Users() {
 
     async function loadUsers() {
       try {
-        const response = await fetch(getApiEndpoint('/users'));
+        const response = await fetch(getApiEndpoint('/api/users/'));
         if (!response.ok) {
           throw new Error(`Failed to load users (${response.status})`);
         }

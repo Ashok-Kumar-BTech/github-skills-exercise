@@ -11,7 +11,7 @@ function Leaderboard() {
 
     async function loadLeaderboard() {
       try {
-        const response = await fetch(getApiEndpoint('/leaderboard'));
+        const response = await fetch(getApiEndpoint('/api/leaderboard/'));
         if (!response.ok) {
           throw new Error(`Failed to load leaderboard (${response.status})`);
         }

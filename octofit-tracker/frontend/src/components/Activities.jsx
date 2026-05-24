@@ -11,7 +11,7 @@ function Activities() {
 
     async function loadActivities() {
       try {
-        const response = await fetch(getApiEndpoint('/activities'));
+        const response = await fetch(getApiEndpoint('/api/activities/'));
         if (!response.ok) {
           throw new Error(`Failed to load activities (${response.status})`);
         }

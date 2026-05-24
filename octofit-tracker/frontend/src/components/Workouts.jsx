@@ -11,7 +11,7 @@ function Workouts() {
 
     async function loadWorkouts() {
       try {
-        const response = await fetch(getApiEndpoint('/workouts'));
+        const response = await fetch(getApiEndpoint('/api/workouts/'));
         if (!response.ok) {
           throw new Error(`Failed to load workouts (${response.status})`);
         }
