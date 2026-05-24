@@ -1,5 +1,9 @@
 import { useEffect, useState } from 'react';
-import { extractRecords, getApiEndpoint, getDisplayValue } from '../lib/api';
+import { extractRecords, getDisplayValue } from '../lib/api';
+
+const usersEndpoint = import.meta.env.VITE_CODESPACE_NAME
+  ? `https://${import.meta.env.VITE_CODESPACE_NAME}-8000.app.github.dev/api/users/`
+  : 'http://localhost:8000/api/users/';
 
 function Users() {
   const [users, setUsers] = useState([]);
@@ -11,7 +15,7 @@ function Users() {
 
     async function loadUsers() {
       try {
-        const response = await fetch(getApiEndpoint('/api/users/'));
+        const response = await fetch(usersEndpoint);
         if (!response.ok) {
           throw new Error(`Failed to load users (${response.status})`);
         }
